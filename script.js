@@ -37,46 +37,64 @@ const pantallaInicial = document.getElementById("pantallaInicial");
 const contenido = document.getElementById("contenido");
 const grid = document.getElementById("grid");
 const mensajeFinal = document.getElementById("mensajeFinal");
+
 let tarjetasVolteadas = 0;
+
 botonEntrar.addEventListener("click", function() {
     pantallaInicial.style.display = "none";
     contenido.style.display = "block";
 });
+
 /* CREAR TARJETAS */
+
 for (let i = 0; i < 32; i++) {
+
     const card = document.createElement("div");
     card.classList.add("card");
+
     const cardInner = document.createElement("div");
     cardInner.classList.add("card-inner");
+
     const cardFront = document.createElement("div");
     cardFront.classList.add("card-front");
     cardFront.textContent = i + 1;
+
     const cardBack = document.createElement("div");
     cardBack.classList.add("card-back");
     cardBack.textContent = razones[i];
+
     cardInner.appendChild(cardFront);
     cardInner.appendChild(cardBack);
     card.appendChild(cardInner);
+
     card.addEventListener("click", function() {
         if (!card.classList.contains("volteada")) {
             card.classList.add("volteada");
             tarjetasVolteadas++;
+
             if (tarjetasVolteadas === 32) {
                 mensajeFinal.style.display = "block";
             }
         }
     });
+
     grid.appendChild(card);
 }
+
 /* GENERAR PÉTALOS */
+
 function crearPetalo() {
     const petalo = document.createElement("div");
     petalo.classList.add("petalo");
+
     petalo.style.left = Math.random() * 100 + "vw";
     petalo.style.animationDuration = (Math.random() * 5 + 5) + "s";
+
     document.getElementById("petalos-container").appendChild(petalo);
+
     setTimeout(function() {
         petalo.remove();
     }, 10000);
 }
+
 setInterval(crearPetalo, 300);
