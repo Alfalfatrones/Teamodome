@@ -1,5 +1,6 @@
 
-const razones = [
+
+    const razones = [
     "Porque preparaste tiramisu cuando tenia ganas de pastel.",
     "Porque contigo me siento en casa.",
     "Porque tu risa mejora cualquier día.",
@@ -36,23 +37,20 @@ const razones = [
 
 const botonEntrar = document.getElementById("botonEntrar");
 const pantallaInicial = document.getElementById("pantallaInicial");
-const seccionCaja = document.getElementById("seccionCaja");
+const contenido = document.getElementById("contenido");
+
 const caja = document.getElementById("caja");
 const cajon = document.getElementById("cajon");
 const modal = document.getElementById("modal");
 const textoCarta = document.getElementById("textoCarta");
 const cerrarCarta = document.getElementById("cerrarCarta");
 
-/* BOTÓN FUNCIONAL */
-
-botonEntrar.addEventListener("click", function () {
+botonEntrar.addEventListener("click", function() {
     pantallaInicial.style.display = "none";
-    seccionCaja.style.display = "flex";
+    contenido.style.display = "block";
 });
 
-/* ABRIR CAJA */
-
-caja.addEventListener("click", function () {
+caja.addEventListener("click", function() {
 
     caja.style.display = "none";
     cajon.style.display = "block";
@@ -60,14 +58,14 @@ caja.addEventListener("click", function () {
     for (let i = 0; i < 32; i++) {
 
         const cartita = document.createElement("div");
-        cartita.classList.add("cartita");
+        cartita.classList.add("cartita-nueva");
         cartita.textContent = i + 1;
 
         cartita.style.left = Math.random() * 80 + "%";
         cartita.style.top = Math.random() * 80 + "%";
         cartita.style.transform = "rotate(" + (Math.random() * 20 - 10) + "deg)";
 
-        cartita.addEventListener("click", function () {
+        cartita.addEventListener("click", function() {
             textoCarta.textContent = razones[i];
             modal.style.display = "flex";
         });
@@ -76,9 +74,7 @@ caja.addEventListener("click", function () {
     }
 });
 
-/* CERRAR MODAL */
-
-cerrarCarta.addEventListener("click", function () {
+cerrarCarta.addEventListener("click", function() {
     modal.style.display = "none";
 });
 
@@ -93,13 +89,9 @@ function crearPetalo() {
 
     document.getElementById("petalos-container").appendChild(petalo);
 
-    setTimeout(function () {
+    setTimeout(function() {
         petalo.remove();
     }, 10000);
 }
 
 setInterval(crearPetalo, 300);
-
-cerrarCarta.addEventListener("click", function () {
-    modal.classList.add("oculto");
-});
