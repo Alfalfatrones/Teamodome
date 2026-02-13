@@ -1,147 +1,101 @@
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: radial-gradient(circle at center, #1a001f, #0d0013);
-    color: white;
-    text-align: center;
-    overflow-x: hidden;
+const razones = [
+    "Porque tu sonrisa me desarma.",
+    "Porque contigo me siento en casa.",
+    "Porque tu risa mejora cualquier día.",
+    "Porque me inspiras a ser mejor.",
+    "Porque nuestras conversaciones fluyen sin esfuerzo.",
+    "Porque me encanta cómo ves el mundo.",
+    "Porque tu abrazo tiene poderes mágicos.",
+    "Porque me haces sentir elegido.",
+    "Porque confías en mí.",
+    "Porque compartimos tonterías que solo nosotros entendemos.",
+    "Porque me encanta escucharte hablar de lo que te apasiona.",
+    "Porque haces especiales los días normales.",
+    "Porque tu mirada dice más que mil palabras.",
+    "Porque me apoyas incluso en mis días difíciles.",
+    "Porque contigo el tiempo vuela.",
+    "Porque haces que todo tenga más sentido.",
+    "Porque nuestras diferencias nos complementan.",
+    "Porque me encanta cómo me miras cuando sonríes.",
+    "Porque me haces sentir tranquilo.",
+    "Porque contigo puedo ser yo mismo.",
+    "Porque cada recuerdo contigo es valioso.",
+    "Porque haces que mi corazón lata más fuerte.",
+    "Porque me das paz.",
+    "Porque compartimos sueños.",
+    "Porque contigo todo se siente más ligero.",
+    "Porque tu energía ilumina mi vida.",
+    "Porque cada día contigo es diferente.",
+    "Porque me encanta tu forma de pensar.",
+    "Porque tu cariño es sincero.",
+    "Porque nuestras risas son reales.",
+    "Porque amo nuestra historia.",
+    "Porque esto recién comienza."
+];
+
+const botonEntrar = document.getElementById("botonEntrar");
+const pantallaInicial = document.getElementById("pantallaInicial");
+const contenido = document.getElementById("contenido");
+const grid = document.getElementById("grid");
+const mensajeFinal = document.getElementById("mensajeFinal");
+
+let tarjetasVolteadas = 0;
+
+botonEntrar.addEventListener("click", function() {
+    pantallaInicial.style.display = "none";
+    contenido.style.display = "block";
+});
+
+/* CREAR TARJETAS */
+
+for (let i = 0; i < 32; i++) {
+
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    const cardInner = document.createElement("div");
+    cardInner.classList.add("card-inner");
+
+    const cardFront = document.createElement("div");
+    cardFront.classList.add("card-front");
+    cardFront.textContent = i + 1;
+
+    const cardBack = document.createElement("div");
+    cardBack.classList.add("card-back");
+    cardBack.textContent = razones[i];
+
+    cardInner.appendChild(cardFront);
+    cardInner.appendChild(cardBack);
+    card.appendChild(cardInner);
+
+    card.addEventListener("click", function() {
+        if (!card.classList.contains("volteada")) {
+            card.classList.add("volteada");
+            tarjetasVolteadas++;
+
+            if (tarjetasVolteadas === 32) {
+                mensajeFinal.style.display = "block";
+            }
+        }
+    });
+
+    grid.appendChild(card);
 }
 
-/* PÉTALOS */
+/* GENERAR PÉTALOS */
 
-#petalos-container {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: hidden;
-    top: 0;
-    left: 0;
-    z-index: 0;
+function crearPetalo() {
+    const petalo = document.createElement("div");
+    petalo.classList.add("petalo");
+
+    petalo.style.left = Math.random() * 100 + "vw";
+    petalo.style.animationDuration = (Math.random() * 5 + 5) + "s";
+
+    document.getElementById("petalos-container").appendChild(petalo);
+
+    setTimeout(function() {
+        petalo.remove();
+    }, 10000);
 }
 
-.petalo {
-    position: absolute;
-    width: 15px;
-    height: 20px;
-    background: linear-gradient(145deg, #a64dff, #6a0dad);
-    border-radius: 50% 50% 50% 50%;
-    opacity: 0.8;
-    animation: caer linear infinite;
-}
-
-@keyframes caer {
-    0% {
-        transform: translateY(-50px) rotate(0deg);
-    }
-    100% {
-        transform: translateY(110vh) rotate(360deg);
-    }
-}
-
-/* PANTALLA INICIAL */
-
-.pantalla-inicial {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-}
-
-.titulo-animado {
-    width: 70%;
-    animation: aparecer 2s ease-in-out;
-}
-
-@keyframes aparecer {
-    0% {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* BOTÓN TIPO JUEGO */
-
-.boton-juego {
-    margin-top: 30px;
-    padding: 18px 40px;
-    font-size: 20px;
-    background: linear-gradient(45deg, #a64dff, #6a0dad);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.boton-juego:hover {
-    transform: scale(1.1);
-    box-shadow: 0px 0px 20px #a64dff;
-}
-
-/* CONTENIDO */
-
-.contenido {
-    padding: 40px 20px;
-    position: relative;
-    z-index: 1;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 15px;
-    margin-top: 30px;
-}
-
-.card {
-    perspective: 1000px;
-}
-
-.card-inner {
-    position: relative;
-    width: 100%;
-    height: 120px;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-}
-
-.card.volteada .card-inner {
-    transform: rotateY(180deg);
-}
-
-.card-front, .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    backface-visibility: hidden;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-.card-front {
-    background-color: #2a0033;
-    font-size: 22px;
-}
-
-.card-back {
-    background-color: #a64dff;
-    transform: rotateY(180deg);
-    font-size: 14px;
-}
-
-.mensaje-final {
-    margin-top: 40px;
-    font-size: 22px;
-}
+setInterval(crearPetalo, 300);
