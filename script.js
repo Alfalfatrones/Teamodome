@@ -1,8 +1,9 @@
 
 
    
-    const razones = [
-    "Porque preparaste tiramisu cuando tenia ganas de pastel.",
+   
+   const razones = [
+   "Porque preparaste tiramisu cuando tenia ganas de pastel.",
     "Porque contigo me siento en casa.",
     "Porque tu risa mejora cualquier día.",
     "Porque me inspiras a ser mejor.",
@@ -42,46 +43,50 @@ const contenido = document.getElementById("contenido");
 const grid = document.getElementById("grid");
 const mensajeFinal = document.getElementById("mensajeFinal");
 
-let abiertas = 0;
+let tarjetasVolteadas = 0;
 
 botonEntrar.addEventListener("click", function() {
     pantallaInicial.style.display = "none";
     contenido.style.display = "block";
 });
 
-/* CREAR CARTITAS */
+/* CREAR TARJETAS */
 
 for (let i = 0; i < 32; i++) {
 
-    const cartita = document.createElement("div");
-    cartita.classList.add("cartita");
+    const card = document.createElement("div");
+    card.classList.add("card");
 
-    const sobre = document.createElement("div");
-    sobre.classList.add("sobre");
-    sobre.textContent = i + 1;
+    const cardInner = document.createElement("div");
+    cardInner.classList.add("card-inner");
 
-    const papel = document.createElement("div");
-    papel.classList.add("papel");
-    papel.textContent = razones[i];
+    const cardFront = document.createElement("div");
+    cardFront.classList.add("card-front");
+    cardFront.textContent = i + 1;
 
-    cartita.appendChild(sobre);
-    cartita.appendChild(papel);
+    const cardBack = document.createElement("div");
+    cardBack.classList.add("card-back");
+    cardBack.textContent = razones[i];
 
-    cartita.addEventListener("click", function() {
-        if (!cartita.classList.contains("abierta")) {
-            cartita.classList.add("abierta");
-            abiertas++;
+    cardInner.appendChild(cardFront);
+    cardInner.appendChild(cardBack);
+    card.appendChild(cardInner);
 
-            if (abiertas === 32) {
+    card.addEventListener("click", function() {
+        if (!card.classList.contains("volteada")) {
+            card.classList.add("volteada");
+            tarjetasVolteadas++;
+
+            if (tarjetasVolteadas === 32) {
                 mensajeFinal.style.display = "block";
             }
         }
     });
 
-    grid.appendChild(cartita);
+    grid.appendChild(card);
 }
 
-/* PÉTALOS (SIN TOCAR) */
+/* GENERAR PÉTALOS */
 
 function crearPetalo() {
     const petalo = document.createElement("div");
