@@ -1,5 +1,5 @@
 const razones = [
-    "Porque tu sonrisa me desarma.",
+    "Porque preparaste tiramisu cuando tenia ganas de pastel.",
     "Porque contigo me siento en casa.",
     "Porque tu risa mejora cualquier día.",
     "Porque me inspiras a ser mejor.",
@@ -33,25 +33,27 @@ const razones = [
     "Porque esto recién comienza."
 ];
 
-const botonEntrar = document.getElementById("botonEntrar");
 const pantallaInicial = document.getElementById("pantallaInicial");
-const cajaContainer = document.getElementById("cajaContainer");
+const botonEntrar = document.getElementById("botonEntrar");
+const seccionCaja = document.getElementById("seccionCaja");
 const caja = document.getElementById("caja");
 const cajon = document.getElementById("cajon");
 const modal = document.getElementById("modal");
 const textoCarta = document.getElementById("textoCarta");
 const cerrarCarta = document.getElementById("cerrarCarta");
 
-botonEntrar.addEventListener("click", function() {
-    pantallaInicial.style.display = "none";
-    cajaContainer.style.display = "block";
+botonEntrar.addEventListener("click", function () {
+    pantallaInicial.classList.add("oculto");
+    seccionCaja.classList.remove("oculto");
 });
 
-caja.addEventListener("click", function() {
-    caja.style.display = "none";
-    cajon.style.display = "block";
+caja.addEventListener("click", function () {
+
+    caja.classList.add("oculto");
+    cajon.classList.remove("oculto");
 
     for (let i = 0; i < 32; i++) {
+
         const cartita = document.createElement("div");
         cartita.classList.add("cartita");
         cartita.textContent = i + 1;
@@ -60,29 +62,15 @@ caja.addEventListener("click", function() {
         cartita.style.top = Math.random() * 80 + "%";
         cartita.style.transform = "rotate(" + (Math.random() * 20 - 10) + "deg)";
 
-        cartita.addEventListener("click", function() {
+        cartita.addEventListener("click", function () {
             textoCarta.textContent = razones[i];
-            modal.style.display = "flex";
+            modal.classList.remove("oculto");
         });
 
         cajon.appendChild(cartita);
     }
 });
 
-botonEntrar.addEventListener("click", function() {
-    pantallaInicial.style.display = "none";
-    cajaContainer.style.display = "flex";
+cerrarCarta.addEventListener("click", function () {
+    modal.classList.add("oculto");
 });
-
-/* PÉTALOS */
-
-function crearPetalo() {
-    const petalo = document.createElement("div");
-    petalo.classList.add("petalo");
-    petalo.style.left = Math.random() * 100 + "vw";
-    petalo.style.animationDuration = (Math.random() * 5 + 5) + "s";
-    document.getElementById("petalos-container").appendChild(petalo);
-    setTimeout(function() { petalo.remove(); }, 10000);
-}
-
-setInterval(crearPetalo, 300);
