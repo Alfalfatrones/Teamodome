@@ -69,8 +69,9 @@ caja.addEventListener("click", function() {
     }
 });
 
-cerrarCarta.addEventListener("click", function() {
-    modal.style.display = "none";
+botonEntrar.addEventListener("click", function() {
+    pantallaInicial.style.display = "none";
+    cajaContainer.style.display = "flex";
 });
 
 /* PÉTALOS */
