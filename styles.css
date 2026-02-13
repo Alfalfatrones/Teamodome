@@ -8,7 +8,6 @@ body {
 }
 
 /* PÉTALOS */
-
 #petalos-container {
     position: fixed;
     width: 100%;
@@ -40,7 +39,6 @@ body {
 }
 
 /* PANTALLA INICIAL */
-
 .pantalla-inicial {
     height: 100vh;
     display: flex;
@@ -68,7 +66,6 @@ body {
 }
 
 /* BOTÓN */
-
 .boton-juego {
     margin-top: 30px;
     padding: 18px 40px;
@@ -86,8 +83,72 @@ body {
     box-shadow: 0px 0px 20px #a64dff;
 }
 
-/* CONTENIDO */
+/* BOTÓN VALENTINE */
+.boton-valentine {
+    margin-top: 30px;
+    padding: 20px 45px;
+    font-size: 24px;
+    background: linear-gradient(45deg, #ff1493, #ff69b4);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+    box-shadow: 0px 5px 15px rgba(255, 20, 147, 0.4);
+}
 
+.boton-valentine:hover {
+    transform: scale(1.15);
+    box-shadow: 0px 0px 30px #ff1493;
+}
+
+/* RESPUESTA VALENTINE */
+.respuesta-valentine {
+    margin-top: 30px;
+    animation: aparecer 1.5s ease-in-out;
+}
+
+.corazones-animados {
+    font-size: 32px;
+    animation: latido 1s infinite;
+}
+
+@keyframes latido {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* CORAZONES FLOTANTES */
+.corazon-flotante {
+    position: absolute;
+    animation: flotar linear;
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+@keyframes flotar {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.9;
+    }
+    90% {
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* CONTENIDO */
 .contenido {
     padding: 40px 20px;
     position: relative;
@@ -141,6 +202,10 @@ body {
     font-size: 14px;
 }
 
+.mensaje-final {
+    margin-top: 40px;
+    font-size: 22px;
+}
 .mensaje-final {
     margin-top: 40px;
     font-size: 22px;
