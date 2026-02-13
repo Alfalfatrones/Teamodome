@@ -1,12 +1,13 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background: radial-gradient(circle at center, #1a001f, #0d0013);
+    background: radial-gradient(circle at center, 
+#1a001f, 
+#0d0013);
     color: white;
     text-align: center;
     overflow-x: hidden;
 }
-
 /* PÉTALOS */
 #petalos-container {
     position: fixed;
@@ -18,17 +19,17 @@ body {
     left: 0;
     z-index: 0;
 }
-
 .petalo {
     position: absolute;
     width: 15px;
     height: 20px;
-    background: linear-gradient(145deg, #a64dff, #6a0dad);
+    background: linear-gradient(145deg, 
+#a64dff, 
+#6a0dad);
     border-radius: 50% 50% 50% 50%;
     opacity: 0.8;
     animation: caer linear infinite;
 }
-
 @keyframes caer {
     0% {
         transform: translateY(-50px) rotate(0deg);
@@ -37,7 +38,6 @@ body {
         transform: translateY(110vh) rotate(360deg);
     }
 }
-
 /* PANTALLA INICIAL */
 .pantalla-inicial {
     height: 100vh;
@@ -48,12 +48,10 @@ body {
     position: relative;
     z-index: 1;
 }
-
 .titulo-animado {
     width: 70%;
     animation: aparecer 2s ease-in-out;
 }
-
 @keyframes aparecer {
     0% {
         opacity: 0;
@@ -64,161 +62,40 @@ body {
         transform: translateY(0);
     }
 }
-
 /* BOTÓN */
 .boton-juego {
     margin-top: 30px;
     padding: 18px 40px;
     font-size: 20px;
-    background: linear-gradient(45deg, #a64dff, #6a0dad);
+    background: linear-gradient(45deg, 
+#a64dff, 
+#6a0dad);
     color: white;
     border: none;
     border-radius: 12px;
     cursor: pointer;
     transition: 0.3s;
 }
-
 .boton-juego:hover {
     transform: scale(1.1);
-    box-shadow: 0px 0px 20px #a64dff;
+    box-shadow: 0px 0px 20px 
+#a64dff;
 }
-
-/* PREGUNTA VALENTINE */
-.pregunta-valentine {
-    margin-top: 30px;
-    animation: aparecer 1.5s ease-in-out;
-}
-
-.pregunta-valentine h2 {
-    font-size: 28px;
-    margin-bottom: 25px;
-}
-
-.botones-valentine {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-}
-
-.boton-si {
-    padding: 20px 50px;
-    font-size: 22px;
-    background: linear-gradient(45deg, #ff1493, #ff69b4);
-    color: white;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: 0.3s;
-    font-weight: bold;
-    box-shadow: 0px 5px 15px rgba(255, 20, 147, 0.4);
-}
-
-.boton-si:hover {
-    transform: scale(1.15);
-    box-shadow: 0px 0px 30px #ff1493;
-}
-
-.boton-no {
-    padding: 20px 50px;
-    font-size: 22px;
-    background: linear-gradient(45deg, #555, #888);
-    color: white;
-    border: none;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: 0.3s;
-    font-weight: bold;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
-}
-
-.boton-no:hover {
-    transform: scale(1.15);
-    box-shadow: 0px 0px 30px #666;
-}
-
-/* RESPUESTA VALENTINE */
-.respuesta-valentine {
-    margin-top: 30px;
-    animation: aparecer 1.5s ease-in-out;
-}
-
-.corazones-animados {
-    font-size: 32px;
-    animation: latido 1s infinite;
-}
-
-@keyframes latido {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-}
-
-.carita-triste {
-    font-size: 80px;
-    animation: llorar 2s ease-in-out;
-}
-
-@keyframes llorar {
-    0% {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-    50% {
-        transform: scale(1.1);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* CORAZONES FLOTANTES */
-.corazon-flotante {
-    position: absolute;
-    animation: flotar linear;
-    pointer-events: none;
-    opacity: 0.9;
-}
-
-@keyframes flotar {
-    0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-    }
-    10% {
-        opacity: 0.9;
-    }
-    90% {
-        opacity: 0.9;
-    }
-    100% {
-        transform: translateY(-100px) rotate(360deg);
-        opacity: 0;
-    }
-}
-
 /* CONTENIDO */
 .contenido {
     padding: 40px 20px;
     position: relative;
     z-index: 1;
 }
-
 .grid {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     gap: 15px;
     margin-top: 30px;
 }
-
 .card {
     perspective: 1000px;
 }
-
 .card-inner {
     position: relative;
     width: 100%;
@@ -226,11 +103,9 @@ body {
     transition: transform 0.8s;
     transform-style: preserve-3d;
 }
-
 .card.volteada .card-inner {
     transform: rotateY(180deg);
 }
-
 .card-front, .card-back {
     position: absolute;
     width: 100%;
@@ -243,18 +118,17 @@ body {
     padding: 10px;
     box-sizing: border-box;
 }
-
 .card-front {
-    background-color: #2a0033;
+    background-color: 
+#2a0033;
     font-size: 22px;
 }
-
 .card-back {
-    background-color: #a64dff;
+    background-color: 
+#a64dff;
     transform: rotateY(180deg);
     font-size: 14px;
 }
-
 .mensaje-final {
     margin-top: 40px;
     font-size: 22px;
