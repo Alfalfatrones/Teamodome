@@ -31,12 +31,8 @@ body {
 }
 
 @keyframes caer {
-    0% {
-        transform: translateY(-50px) rotate(0deg);
-    }
-    100% {
-        transform: translateY(110vh) rotate(360deg);
-    }
+    0% { transform: translateY(-50px) rotate(0deg); }
+    100% { transform: translateY(110vh) rotate(360deg); }
 }
 
 /* PANTALLA INICIAL */
@@ -57,14 +53,8 @@ body {
 }
 
 @keyframes aparecer {
-    0% {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
 }
 
 /* BOTÓN */
@@ -94,72 +84,69 @@ body {
     z-index: 1;
 }
 
-/* CAJA */
+/* GRID */
 
-.caja-nueva {
-    background-color: #2a0033;
-    padding: 40px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 20px;
-    width: 320px;
-    margin: 40px auto;
-    transition: 0.3s;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 15px;
+    margin-top: 30px;
 }
 
-.caja-nueva:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 0px 25px #a64dff;
-}
+/* CARTITA */
 
-/* CAJÓN */
-
-.cajon-nuevo {
+.cartita {
     position: relative;
-    width: 80%;
-    height: 500px;
-    margin: 40px auto;
-}
-
-/* CARTITAS */
-
-.cartita-nueva {
-    position: absolute;
-    width: 120px;
-    height: 80px;
-    background-color: white;
-    color: #333;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
+    height: 120px;
+    perspective: 800px;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-.cartita-nueva:hover {
-    transform: scale(1.1);
-}
+/* SOBRE */
 
-/* MODAL */
-
-.modal-nuevo {
-    position: fixed;
+.sobre {
+    position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
+    background-color: #2a0033;
+    border-radius: 10px;
+    transition: transform 0.8s;
+    transform-origin: top;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 5;
+    font-size: 22px;
 }
 
-.modal-contenido-nuevo {
+/* PAPEL */
+
+.papel {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     background-color: white;
     color: #333;
-    padding: 30px;
-    border-radius: 15px;
-    width: 300px;
-    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 0.8s;
+    font-size: 13px;
+}
+
+/* EFECTO ABRIR */
+
+.cartita.abierta .sobre {
+    transform: rotateX(-120deg);
+}
+
+.cartita.abierta .papel {
+    opacity: 1;
+}
+
+/* MENSAJE FINAL */
+
+.mensaje-final {
+    margin-top: 40px;
+    font-size: 22px;
 }
