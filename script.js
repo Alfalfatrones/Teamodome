@@ -38,45 +38,47 @@
 const botonEntrar = document.getElementById("botonEntrar");
 const pantallaInicial = document.getElementById("pantallaInicial");
 const contenido = document.getElementById("contenido");
+const grid = document.getElementById("grid");
+const mensajeFinal = document.getElementById("mensajeFinal");
 
-const caja = document.getElementById("caja");
-const cajon = document.getElementById("cajon");
-const modal = document.getElementById("modal");
-const textoCarta = document.getElementById("textoCarta");
-const cerrarCarta = document.getElementById("cerrarCarta");
+let abiertas = 0;
 
 botonEntrar.addEventListener("click", function() {
     pantallaInicial.style.display = "none";
     contenido.style.display = "block";
 });
 
-caja.addEventListener("click", function() {
+/* CREAR CARTITAS */
 
-    caja.style.display = "none";
-    cajon.style.display = "block";
+for (let i = 0; i < 32; i++) {
 
-    for (let i = 0; i < 32; i++) {
+    const cartita = document.createElement("div");
+    cartita.classList.add("cartita");
 
-        const cartita = document.createElement("div");
-        cartita.classList.add("cartita-nueva");
-        cartita.textContent = i + 1;
+    const sobre = document.createElement("div");
+    sobre.classList.add("sobre");
+    sobre.textContent = i + 1;
 
-        cartita.style.left = Math.random() * 80 + "%";
-        cartita.style.top = Math.random() * 80 + "%";
-        cartita.style.transform = "rotate(" + (Math.random() * 20 - 10) + "deg)";
+    const papel = document.createElement("div");
+    papel.classList.add("papel");
+    papel.textContent = razones[i];
 
-        cartita.addEventListener("click", function() {
-            textoCarta.textContent = razones[i];
-            modal.style.display = "flex";
-        });
+    cartita.appendChild(sobre);
+    cartita.appendChild(papel);
 
-        cajon.appendChild(cartita);
-    }
-});
+    cartita.addEventListener("click", function() {
+        if (!cartita.classList.contains("abierta")) {
+            cartita.classList.add("abierta");
+            abiertas++;
 
-cerrarCarta.addEventListener("click", function() {
-    modal.style.display = "none";
-});
+            if (abiertas === 32) {
+                mensajeFinal.style.display = "block";
+            }
+        }
+    });
+
+    grid.appendChild(cartita);
+}
 
 /* PÉTALOS */
 
