@@ -1,3 +1,4 @@
+
 const razones = [
     "Porque preparaste tiramisu cuando tenia ganas de pastel.",
     "Porque contigo me siento en casa.",
@@ -33,8 +34,8 @@ const razones = [
     "Porque esto recién comienza."
 ];
 
-const pantallaInicial = document.getElementById("pantallaInicial");
 const botonEntrar = document.getElementById("botonEntrar");
+const pantallaInicial = document.getElementById("pantallaInicial");
 const seccionCaja = document.getElementById("seccionCaja");
 const caja = document.getElementById("caja");
 const cajon = document.getElementById("cajon");
@@ -42,15 +43,19 @@ const modal = document.getElementById("modal");
 const textoCarta = document.getElementById("textoCarta");
 const cerrarCarta = document.getElementById("cerrarCarta");
 
+/* BOTÓN FUNCIONAL */
+
 botonEntrar.addEventListener("click", function () {
-    pantallaInicial.classList.add("oculto");
-    seccionCaja.classList.remove("oculto");
+    pantallaInicial.style.display = "none";
+    seccionCaja.style.display = "flex";
 });
+
+/* ABRIR CAJA */
 
 caja.addEventListener("click", function () {
 
-    caja.classList.add("oculto");
-    cajon.classList.remove("oculto");
+    caja.style.display = "none";
+    cajon.style.display = "block";
 
     for (let i = 0; i < 32; i++) {
 
@@ -64,12 +69,36 @@ caja.addEventListener("click", function () {
 
         cartita.addEventListener("click", function () {
             textoCarta.textContent = razones[i];
-            modal.classList.remove("oculto");
+            modal.style.display = "flex";
         });
 
         cajon.appendChild(cartita);
     }
 });
+
+/* CERRAR MODAL */
+
+cerrarCarta.addEventListener("click", function () {
+    modal.style.display = "none";
+});
+
+/* PÉTALOS */
+
+function crearPetalo() {
+    const petalo = document.createElement("div");
+    petalo.classList.add("petalo");
+
+    petalo.style.left = Math.random() * 100 + "vw";
+    petalo.style.animationDuration = (Math.random() * 5 + 5) + "s";
+
+    document.getElementById("petalos-container").appendChild(petalo);
+
+    setTimeout(function () {
+        petalo.remove();
+    }, 10000);
+}
+
+setInterval(crearPetalo, 300);
 
 cerrarCarta.addEventListener("click", function () {
     modal.classList.add("oculto");
