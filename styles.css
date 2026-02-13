@@ -3,12 +3,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background: radial-gradient(circle at center, #1a001f, #0d0013);
     color: white;
-    overflow: hidden;
-}
-
-/* UTILIDAD */
-.oculto {
-    display: none;
+    overflow-x: hidden;
 }
 
 /* PANTALLAS CENTRADAS */
@@ -19,6 +14,8 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
 /* BOTÓN */
@@ -91,6 +88,7 @@ button:hover {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 5;
 }
 
 .modal-contenido {
@@ -100,4 +98,36 @@ button:hover {
     border-radius: 15px;
     width: 300px;
     text-align: center;
+}
+
+/* PÉTALOS */
+
+#petalos-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.petalo {
+    position: absolute;
+    width: 15px;
+    height: 20px;
+    background: linear-gradient(145deg, #a64dff, #6a0dad);
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: caer linear infinite;
+}
+
+@keyframes caer {
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+    }
 }
