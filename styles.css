@@ -1,14 +1,14 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background: radial-gradient(circle at center, 
-#1a001f, 
-#0d0013);
+    background: radial-gradient(circle at center, #1a001f, #0d0013);
     color: white;
     text-align: center;
     overflow-x: hidden;
 }
+
 /* PÉTALOS */
+
 #petalos-container {
     position: fixed;
     width: 100%;
@@ -19,17 +19,17 @@ body {
     left: 0;
     z-index: 0;
 }
+
 .petalo {
     position: absolute;
     width: 15px;
     height: 20px;
-    background: linear-gradient(145deg, 
-#a64dff, 
-#6a0dad);
+    background: linear-gradient(145deg, #a64dff, #6a0dad);
     border-radius: 50% 50% 50% 50%;
     opacity: 0.8;
     animation: caer linear infinite;
 }
+
 @keyframes caer {
     0% {
         transform: translateY(-50px) rotate(0deg);
@@ -38,7 +38,9 @@ body {
         transform: translateY(110vh) rotate(360deg);
     }
 }
+
 /* PANTALLA INICIAL */
+
 .pantalla-inicial {
     height: 100vh;
     display: flex;
@@ -48,10 +50,12 @@ body {
     position: relative;
     z-index: 1;
 }
+
 .titulo-animado {
     width: 70%;
     animation: aparecer 2s ease-in-out;
 }
+
 @keyframes aparecer {
     0% {
         opacity: 0;
@@ -62,40 +66,45 @@ body {
         transform: translateY(0);
     }
 }
+
 /* BOTÓN */
+
 .boton-juego {
     margin-top: 30px;
     padding: 18px 40px;
     font-size: 20px;
-    background: linear-gradient(45deg, 
-#a64dff, 
-#6a0dad);
+    background: linear-gradient(45deg, #a64dff, #6a0dad);
     color: white;
     border: none;
     border-radius: 12px;
     cursor: pointer;
     transition: 0.3s;
 }
+
 .boton-juego:hover {
     transform: scale(1.1);
-    box-shadow: 0px 0px 20px 
-#a64dff;
+    box-shadow: 0px 0px 20px #a64dff;
 }
+
 /* CONTENIDO */
+
 .contenido {
     padding: 40px 20px;
     position: relative;
     z-index: 1;
 }
+
 .grid {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     gap: 15px;
     margin-top: 30px;
 }
+
 .card {
     perspective: 1000px;
 }
+
 .card-inner {
     position: relative;
     width: 100%;
@@ -103,9 +112,11 @@ body {
     transition: transform 0.8s;
     transform-style: preserve-3d;
 }
+
 .card.volteada .card-inner {
     transform: rotateY(180deg);
 }
+
 .card-front, .card-back {
     position: absolute;
     width: 100%;
@@ -118,18 +129,20 @@ body {
     padding: 10px;
     box-sizing: border-box;
 }
+
 .card-front {
-    background-color: 
-#2a0033;
+    background-color: #2a0033;
     font-size: 22px;
 }
+
 .card-back {
-    background-color: 
-#a64dff;
+    background-color: #a64dff;
     transform: rotateY(180deg);
     font-size: 14px;
 }
+
 .mensaje-final {
     margin-top: 40px;
     font-size: 22px;
 }
+
