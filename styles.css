@@ -31,8 +31,12 @@ body {
 }
 
 @keyframes caer {
-    0% { transform: translateY(-50px) rotate(0deg); }
-    100% { transform: translateY(110vh) rotate(360deg); }
+    0% {
+        transform: translateY(-50px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+    }
 }
 
 /* PANTALLA INICIAL */
@@ -98,7 +102,7 @@ body {
 .cartita {
     position: relative;
     height: 120px;
-    perspective: 800px;
+    perspective: 1000px;
     cursor: pointer;
 }
 
@@ -110,12 +114,12 @@ body {
     height: 100%;
     background-color: #2a0033;
     border-radius: 10px;
-    transition: transform 0.8s;
-    transform-origin: top;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 22px;
+    transition: transform 0.8s;
+    transform-origin: top;
 }
 
 /* PAPEL */
@@ -134,7 +138,7 @@ body {
     font-size: 13px;
 }
 
-/* EFECTO ABRIR */
+/* EFECTO ABRIR SOBRE */
 
 .cartita.abierta .sobre {
     transform: rotateX(-120deg);
