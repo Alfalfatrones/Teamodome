@@ -83,11 +83,27 @@ body {
     box-shadow: 0px 0px 20px #a64dff;
 }
 
-/* BOTÓN VALENTINE */
-.boton-valentine {
+/* PREGUNTA VALENTINE */
+.pregunta-valentine {
     margin-top: 30px;
-    padding: 20px 45px;
-    font-size: 24px;
+    animation: aparecer 1.5s ease-in-out;
+}
+
+.pregunta-valentine h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+.botones-valentine {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.boton-si {
+    padding: 20px 50px;
+    font-size: 22px;
     background: linear-gradient(45deg, #ff1493, #ff69b4);
     color: white;
     border: none;
@@ -98,9 +114,27 @@ body {
     box-shadow: 0px 5px 15px rgba(255, 20, 147, 0.4);
 }
 
-.boton-valentine:hover {
+.boton-si:hover {
     transform: scale(1.15);
     box-shadow: 0px 0px 30px #ff1493;
+}
+
+.boton-no {
+    padding: 20px 50px;
+    font-size: 22px;
+    background: linear-gradient(45deg, #555, #888);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.boton-no:hover {
+    transform: scale(1.15);
+    box-shadow: 0px 0px 30px #666;
 }
 
 /* RESPUESTA VALENTINE */
@@ -120,6 +154,25 @@ body {
     }
     50% {
         transform: scale(1.1);
+    }
+}
+
+.carita-triste {
+    font-size: 80px;
+    animation: llorar 2s ease-in-out;
+}
+
+@keyframes llorar {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
     }
 }
 
@@ -202,10 +255,6 @@ body {
     font-size: 14px;
 }
 
-.mensaje-final {
-    margin-top: 40px;
-    font-size: 22px;
-}
 .mensaje-final {
     margin-top: 40px;
     font-size: 22px;
