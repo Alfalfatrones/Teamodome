@@ -1,5 +1,6 @@
 
 
+   
     const razones = [
     "Porque preparaste tiramisu cuando tenia ganas de pastel.",
     "Porque contigo me siento en casa.",
@@ -80,7 +81,7 @@ for (let i = 0; i < 32; i++) {
     grid.appendChild(cartita);
 }
 
-/* PÉTALOS */
+/* PÉTALOS (SIN TOCAR) */
 
 function crearPetalo() {
     const petalo = document.createElement("div");
