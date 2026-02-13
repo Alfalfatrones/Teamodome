@@ -1,45 +1,4 @@
-Aquí están los códigos corregidos con las opciones de Sí y No:
-index.html
-html<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>32 razones por las que amo ser tu novio</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div id="petalos-container"></div>
-    <div class="pantalla-inicial" id="pantallaInicial">
-        <h1 class="titulo-animado">
-            Ya es un mes y un poco más y no hay día que no sea feliz a tu lado 💜
-        </h1>
-        <button id="botonEntrar" class="boton-juego">¿por qué?</button>
-    </div>
-    <div class="contenido" id="contenido" style="display: none;">
-        <h2>32 razones por las que amo ser tu novio 💖</h2>
-        <div class="grid" id="grid"></div>
-        <div class="mensaje-final" id="mensajeFinal" style="display: none;">
-            <h3>JAMAS OLVIDES LO MUCHO QUE TE AMO ❤️</h3>
-            <div id="preguntaValentine" class="pregunta-valentine">
-                <h2>¿Quieres ser mi Valentine? 💕</h2>
-                <div class="botones-valentine">
-                    <button id="botonSi" class="boton-si">Sí 💖</button>
-                    <button id="botonNo" class="boton-no">No 💔</button>
-                </div>
-            </div>
-            <div id="respuestaSi" class="respuesta-valentine" style="display: none;">
-                <h2 class="corazones-animados">💖 ¡SÍ! ¡ERES MI VALENTINE! 💖</h2>
-            </div>
-            <div id="respuestaNo" class="respuesta-valentine" style="display: none;">
-                <h2 class="carita-triste">😢</h2>
-            </div>
-        </div>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>
-script.js
-javascriptconst razones = [
+const razones = [
     "Porque preparaste tiramisu cuando tenia ganas de pastel.",
     "Porque me das de comer.",
     "Porque trabajas en ti misma para tener una relacion sana.",
@@ -79,35 +38,13 @@ const pantallaInicial = document.getElementById("pantallaInicial");
 const contenido = document.getElementById("contenido");
 const grid = document.getElementById("grid");
 const mensajeFinal = document.getElementById("mensajeFinal");
-const preguntaValentine = document.getElementById("preguntaValentine");
-const botonSi = document.getElementById("botonSi");
-const botonNo = document.getElementById("botonNo");
-const respuestaSi = document.getElementById("respuestaSi");
-const respuestaNo = document.getElementById("respuestaNo");
 
 let tarjetasVolteadas = 0;
 
+// Botón entrar
 botonEntrar.addEventListener("click", function() {
     pantallaInicial.style.display = "none";
     contenido.style.display = "block";
-});
-
-/* BOTONES VALENTINE */
-botonSi.addEventListener("click", function() {
-    preguntaValentine.style.display = "none";
-    respuestaSi.style.display = "block";
-    
-    // Crear explosión de corazones
-    for (let i = 0; i < 30; i++) {
-        setTimeout(function() {
-            crearCorazon();
-        }, i * 100);
-    }
-});
-
-botonNo.addEventListener("click", function() {
-    preguntaValentine.style.display = "none";
-    respuestaNo.style.display = "block";
 });
 
 /* CREAR TARJETAS */
@@ -135,8 +72,36 @@ for (let i = 0; i < 32; i++) {
             card.classList.add("volteada");
             tarjetasVolteadas++;
             
+            console.log("Tarjetas volteadas:", tarjetasVolteadas); // Para debug
+            
             if (tarjetasVolteadas === 32) {
-                mensajeFinal.style.display = "block";
+                setTimeout(function() {
+                    mensajeFinal.style.display = "block";
+                    
+                    // Agregar event listeners después de mostrar el mensaje
+                    const botonSi = document.getElementById("botonSi");
+                    const botonNo = document.getElementById("botonNo");
+                    const preguntaValentine = document.getElementById("preguntaValentine");
+                    const respuestaSi = document.getElementById("respuestaSi");
+                    const respuestaNo = document.getElementById("respuestaNo");
+                    
+                    botonSi.addEventListener("click", function() {
+                        preguntaValentine.style.display = "none";
+                        respuestaSi.style.display = "block";
+                        
+                        // Crear explosión de corazones
+                        for (let i = 0; i < 30; i++) {
+                            setTimeout(function() {
+                                crearCorazon();
+                            }, i * 100);
+                        }
+                    });
+                    
+                    botonNo.addEventListener("click", function() {
+                        preguntaValentine.style.display = "none";
+                        respuestaNo.style.display = "block";
+                    });
+                }, 500);
             }
         }
     });
