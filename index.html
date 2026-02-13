@@ -7,29 +7,27 @@
 </head>
 <body>
 
-    <!-- PÉTALOS -->
     <div id="petalos-container"></div>
 
-    <!-- PANTALLA INICIAL -->
-    <div id="pantallaInicial" class="pantalla">
-        <h1>
+    <div class="pantalla-inicial" id="pantallaInicial">
+        <h1 class="titulo-animado">
             Ya es un mes y un poco más y no hay día que no sea feliz a tu lado 💜
         </h1>
-        <button id="botonEntrar">¿por qué?</button>
+        <button id="botonEntrar" class="boton-juego">¿por qué?</button>
     </div>
 
-    <!-- CAJA -->
-    <div id="seccionCaja" class="pantalla" style="display: none;">
-        <div id="caja" class="caja">
+    <div class="contenido" id="contenido" style="display: none;">
+
+        <div id="caja" class="caja-nueva">
             💜 Haz clic para abrir tu cajita 💜
         </div>
 
-        <div id="cajon" class="cajon" style="display: none;"></div>
+        <div id="cajon" class="cajon-nuevo" style="display: none;"></div>
+
     </div>
 
-    <!-- MODAL -->
-    <div id="modal" class="modal" style="display: none;">
-        <div class="modal-contenido">
+    <div id="modal" class="modal-nuevo" style="display: none;">
+        <div class="modal-contenido-nuevo">
             <p id="textoCarta"></p>
             <button id="cerrarCarta">Cerrar</button>
         </div>
