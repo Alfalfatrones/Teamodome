@@ -35,67 +35,53 @@ const razones = [
 
 const botonEntrar = document.getElementById("botonEntrar");
 const pantallaInicial = document.getElementById("pantallaInicial");
-const contenido = document.getElementById("contenido");
-const grid = document.getElementById("grid");
-const mensajeFinal = document.getElementById("mensajeFinal");
-
-let tarjetasVolteadas = 0;
+const cajaContainer = document.getElementById("cajaContainer");
+const caja = document.getElementById("caja");
+const cajon = document.getElementById("cajon");
+const modal = document.getElementById("modal");
+const textoCarta = document.getElementById("textoCarta");
+const cerrarCarta = document.getElementById("cerrarCarta");
 
 botonEntrar.addEventListener("click", function() {
     pantallaInicial.style.display = "none";
-    contenido.style.display = "block";
+    cajaContainer.style.display = "block";
 });
 
-/* CREAR TARJETAS */
+caja.addEventListener("click", function() {
+    caja.style.display = "none";
+    cajon.style.display = "block";
 
-for (let i = 0; i < 32; i++) {
+    for (let i = 0; i < 32; i++) {
+        const cartita = document.createElement("div");
+        cartita.classList.add("cartita");
+        cartita.textContent = i + 1;
 
-    const card = document.createElement("div");
-    card.classList.add("card");
+        cartita.style.left = Math.random() * 80 + "%";
+        cartita.style.top = Math.random() * 80 + "%";
+        cartita.style.transform = "rotate(" + (Math.random() * 20 - 10) + "deg)";
 
-    const cardInner = document.createElement("div");
-    cardInner.classList.add("card-inner");
+        cartita.addEventListener("click", function() {
+            textoCarta.textContent = razones[i];
+            modal.style.display = "flex";
+        });
 
-    const cardFront = document.createElement("div");
-    cardFront.classList.add("card-front");
-    cardFront.textContent = i + 1;
+        cajon.appendChild(cartita);
+    }
+});
 
-    const cardBack = document.createElement("div");
-    cardBack.classList.add("card-back");
-    cardBack.textContent = razones[i];
+cerrarCarta.addEventListener("click", function() {
+    modal.style.display = "none";
+});
 
-    cardInner.appendChild(cardFront);
-    cardInner.appendChild(cardBack);
-    card.appendChild(cardInner);
-
-    card.addEventListener("click", function() {
-        if (!card.classList.contains("volteada")) {
-            card.classList.add("volteada");
-            tarjetasVolteadas++;
-
-            if (tarjetasVolteadas === 32) {
-                mensajeFinal.style.display = "block";
-            }
-        }
-    });
-
-    grid.appendChild(card);
-}
-
-/* GENERAR PÉTALOS */
+/* PÉTALOS */
 
 function crearPetalo() {
     const petalo = document.createElement("div");
     petalo.classList.add("petalo");
-
     petalo.style.left = Math.random() * 100 + "vw";
     petalo.style.animationDuration = (Math.random() * 5 + 5) + "s";
-
     document.getElementById("petalos-container").appendChild(petalo);
-
-    setTimeout(function() {
-        petalo.remove();
-    }, 10000);
+    setTimeout(function() { petalo.remove(); }, 10000);
 }
 
 setInterval(crearPetalo, 300);
